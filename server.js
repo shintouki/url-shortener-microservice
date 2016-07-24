@@ -25,7 +25,7 @@ app.get(re, function (req, res) {
     var shortUrl = "http://" + req.headers.host + "/" + randomNum;
     
     var bothUrls = {original_url: originalUrl, short_url: shortUrl};
-    MongoClient.connect('mongodb://localhost:27017/data', function(err, db) {
+    MongoClient.connect('mongodb://admin:admin123@ds029705.mlab.com:29705/data', function(err, db) {
         if (err) throw err;
         
         var urlCollection = db.collection('urlCollection');
@@ -48,7 +48,7 @@ app.get(re2, function (req, res) {
     var shortUrl = "http://" + req.headers.host + req.url;
     console.log(shortUrl);
     var originalUrl;
-    MongoClient.connect('mongodb://localhost:27017/data', function(err, db) {
+    MongoClient.connect('mongodb://admin:admin123@ds029705.mlab.com:29705/data', function(err, db) {
         if (err) throw err;
         
         var urlCollection = db.collection('urlCollection');
