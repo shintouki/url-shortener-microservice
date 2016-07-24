@@ -22,7 +22,7 @@ app.get(re, function (req, res) {
     var randomNum = Math.floor((Math.random() * 9000) + 1000);
     // console.log(req.headers.host);
     // console.log(req.headers.host.substr(0, req.headers.host.length - 3));
-    var shortUrl = "http://" + req.headers.host.substr(0, req.headers.host.length - 3) + "/" + randomNum;
+    var shortUrl = "http://" + req.headers.host.substr + "/" + randomNum;
     
     var bothUrls = {original_url: originalUrl, short_url: shortUrl};
     MongoClient.connect('mongodb://localhost:27017/data', function(err, db) {
@@ -45,7 +45,7 @@ var re2 = new RegExp ("^/\\d{4}$");
 
 app.get(re2, function (req, res) {
     
-    var shortUrl = "http://" + req.headers.host.substr(0, req.headers.host.length - 3) + req.url;
+    var shortUrl = "http://" + req.headers.host.substr + req.url;
     // console.log(shortUrl);
     var originalUrl;
     MongoClient.connect('mongodb://localhost:27017/data', function(err, db) {
