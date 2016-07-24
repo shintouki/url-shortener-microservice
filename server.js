@@ -27,8 +27,10 @@ app.get(re, function (req, res) {
     var randomNum = Math.floor((Math.random() * 9000) + 1000);
     // console.log(req.headers.host);
     // console.log(req.headers.host.substr(0, req.headers.host.length - 3));
-    var shortUrl = "http://" + req.headers.host + "/" + randomNum;
     
+    
+    var shortUrl = "http://" + req.headers.host + "/" + randomNum;
+    console.log("creating: " + req.headers.host);
     var bothUrls = {original_url: originalUrl, short_url: shortUrl};
     MongoClient.connect('mongodb://admin:admin123@ds029705.mlab.com:29705/data', function(err, db) {
         if (err) throw err;
@@ -50,8 +52,12 @@ var re2 = new RegExp ("^/\\d{4}$");
 
 app.get(re2, function (req, res) {
     
-    var shortUrl = "http://" + req.headers.host + req.url;
-    console.log(shortUrl);
+    var indexOfSecondColon = req.headers.host.indexOf(":", 7);
+    // console.log(indexOfSecondColon);
+    // console.log(req.headers.host.substr(0, indexOfSecondColon));
+    var shortUrl = "http://" + req.headers.host.substr(0, indexOfSecondColon) + req.url;
+    // console.log(req.headers.host);
+    // console.log(shortUrl);
     var originalUrl;
     MongoClient.connect('mongodb://admin:admin123@ds029705.mlab.com:29705/data', function(err, db) {
         if (err) throw err;
