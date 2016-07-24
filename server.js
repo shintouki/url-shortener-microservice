@@ -55,7 +55,14 @@ app.get(re2, function (req, res) {
     var indexOfSecondColon = req.headers.host.indexOf(":", 7);
     // console.log(indexOfSecondColon);
     // console.log(req.headers.host.substr(0, indexOfSecondColon));
-    var shortUrl = "http://" + req.headers.host.substr(0, indexOfSecondColon) + req.url;
+    var hostUrl;
+    if (indexOfSecondColon != -1) {
+        hostUrl = req.headers.host.substr(0, indexOfSecondColon);
+    }
+    else {
+        hostUrl = req.headers.host;
+    }
+    var shortUrl = "http://" + hostUrl + req.url;
     // console.log(req.headers.host);
     // console.log(shortUrl);
     var originalUrl;
