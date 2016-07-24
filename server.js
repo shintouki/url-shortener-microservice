@@ -66,8 +66,9 @@ app.get(re2, function (req, res) {
             // console.log(doc);
             
             var originalUrl = doc[0].original_url;
-            db.close();
+            
             res.redirect(originalUrl);
+            db.close();
         });
       
     });
