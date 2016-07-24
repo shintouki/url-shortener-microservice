@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
 //   res.send("url shortener");
 // });
 
-var re = new RegExp("^/new/https?://(www\.)?\\w+\\.\\.+$");
+var re = new RegExp("^/new/https?://(www\.)?\\w+\\..+$");
 
 app.get(re, function (req, res) {
     var fullUrl = req.url;
