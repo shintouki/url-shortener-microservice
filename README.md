@@ -2,6 +2,7 @@ URL Shortener Microservice
 
 https://url-shortener-ted.herokuapp.com
 
+
 Pass in a URL as a parameter to receive shortened URL in JSON response.
 
 Visiting shortened URL will redirect to original link.
@@ -21,4 +22,4 @@ http://url-shortener-ted.herokuapp.com/3447
 
 This should redirect to:
 
-http://www.google.com}
+http://www.google.com
